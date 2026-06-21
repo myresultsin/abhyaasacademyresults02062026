@@ -326,10 +326,10 @@ document.getElementById('searchBox').addEventListener('keyup', function(e){
   if(e.key === 'Enter') doSearch();
 });
 
-/* Free, no-signup page-view counter using countapi.xyz.
-   "abhyaasacademyresults02062026" below is the unique namespace for this site —
-   keep it the same on this page so the count keeps accumulating correctly. */
-fetch('https://api.countapi.xyz/hit/abhyaasacademyresults02062026/biology-test-02062026')
+/* Free, no-signup page-view counter using countapi.mileshilliard.com
+   (community-run replacement for the now-discontinued countapi.xyz).
+   Keep the key below the same on this page so the count keeps accumulating correctly. */
+fetch('https://countapi.mileshilliard.com/api/v1/hit/abhyaasacademyresults02062026_biology_02062026')
   .then(r => r.json())
   .then(data => {
     document.getElementById('hitCount').textContent = 'Page views: ' + data.value;
