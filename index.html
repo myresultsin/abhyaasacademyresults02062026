@@ -55,6 +55,7 @@
     flex-shrink:0;
   }
   .mark-wrap{text-align:center;margin-top:18px;}
+  .hits{text-align:center;color:#6b7398;font-size:11.5px;margin:10px 0 0;}
   .brand .mark span{
     color:#cbd5ff;font-size:12.5px;font-weight:600;letter-spacing:.4px;
   }
@@ -234,6 +235,7 @@
 
   <p class="support">For support contact <a href="tel:9632318383">9632318383</a> · <a href="tel:9144844032">9144844032</a> · <a href="tel:8904329123">8904329123</a></p>
   <div class="mark-wrap"><div class="mark"><span class="dot"></span><span>RESULT PORTAL</span></div></div>
+  <p class="hits" id="hitCount"></p>
 </div>
 
 <script>
@@ -323,6 +325,16 @@ function doSearch(){
 document.getElementById('searchBox').addEventListener('keyup', function(e){
   if(e.key === 'Enter') doSearch();
 });
+
+/* Free, no-signup page-view counter using countapi.xyz.
+   "abhyaasacademyresults02062026" below is the unique namespace for this site —
+   keep it the same on this page so the count keeps accumulating correctly. */
+fetch('https://api.countapi.xyz/hit/abhyaasacademyresults02062026/biology-test-02062026')
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById('hitCount').textContent = 'Page views: ' + data.value;
+  })
+  .catch(() => { /* fail silently if the counter service is unreachable */ });
 </script>
 
 </body>
