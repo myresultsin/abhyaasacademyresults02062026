@@ -206,7 +206,7 @@
 
   @media print{
     body{background:#fff;padding:0;}
-    .mark-wrap, .testbar-wrap, .search-row{display:none;}
+    .mark-wrap, .testbar-wrap, .search-row, .hits{display:none;}
     .panel{box-shadow:none;}
   }
 </style>
@@ -235,7 +235,7 @@
 
   <p class="support">For support contact <a href="tel:9632318383">9632318383</a> · <a href="tel:9144844032">9144844032</a> · <a href="tel:8904329123">8904329123</a></p>
   <div class="mark-wrap"><div class="mark"><span class="dot"></span><span>RESULT PORTAL</span></div></div>
-  <p class="hits" id="hitCount"></p>
+  <p class="hits"><img src="https://countapi.mileshilliard.com/api/v1/hit/abhyaasacademyresults02062026_biology_02062026/shield?text=Page+Views&bgcolor=141b34&textcolor=cbd5ff&style=flat" alt="Page views" style="height:20px;vertical-align:middle;"></p>
 </div>
 
 <script>
@@ -325,16 +325,6 @@ function doSearch(){
 document.getElementById('searchBox').addEventListener('keyup', function(e){
   if(e.key === 'Enter') doSearch();
 });
-
-/* Free, no-signup page-view counter using countapi.mileshilliard.com
-   (community-run replacement for the now-discontinued countapi.xyz).
-   Keep the key below the same on this page so the count keeps accumulating correctly. */
-fetch('https://countapi.mileshilliard.com/api/v1/hit/abhyaasacademyresults02062026_biology_02062026')
-  .then(r => r.json())
-  .then(data => {
-    document.getElementById('hitCount').textContent = 'Page views: ' + data.value;
-  })
-  .catch(() => { /* fail silently if the counter service is unreachable */ });
 </script>
 
 </body>
