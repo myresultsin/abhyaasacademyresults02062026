@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Apple School — Result Portal</title>
+<title>The Apple School — Biology Result Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -54,19 +54,24 @@
     background:linear-gradient(135deg,var(--accent),var(--accent-2));
     flex-shrink:0;
   }
+  .mark-wrap{text-align:center;margin-top:18px;}
   .brand .mark span{
     color:#cbd5ff;font-size:12.5px;font-weight:600;letter-spacing:.4px;
   }
   .brand h1{
     font-family:'Sora',sans-serif;
     font-weight:800;
-    font-size:30px;
-    margin:0 0 6px;
+    font-size:48px;
+    line-height:1.05;
+    margin:0 0 10px;
     background:linear-gradient(90deg,#fff,#c9d3ff);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
     letter-spacing:.2px;
+  }
+  @media (max-width:480px){
+    .brand h1{font-size:36px;}
   }
   .brand .sub1{color:#9aa3c7;font-size:13px;font-weight:500;margin:0 0 4px;}
   .brand .sub2{
@@ -200,7 +205,7 @@
 
   @media print{
     body{background:#fff;padding:0;}
-    .brand .mark, .testbar-wrap, .search-row{display:none;}
+    .mark-wrap, .testbar-wrap, .search-row{display:none;}
     .panel{box-shadow:none;}
   }
 </style>
@@ -209,7 +214,6 @@
 
 <div class="wrap">
   <div class="brand">
-    <div class="mark"><span class="dot"></span><span>RESULT PORTAL</span></div>
     <h1>The Apple School</h1>
     <p class="sub1">in collaboration with</p>
     <p class="sub2">Abhyaas IIT-JEE / NEET Foundation Academy</p>
@@ -229,6 +233,7 @@
   </div>
 
   <p class="support">For support contact <a href="tel:9632318383">9632318383</a> · <a href="tel:9144844032">9144844032</a> · <a href="tel:8904329123">8904329123</a></p>
+  <div class="mark-wrap"><div class="mark"><span class="dot"></span><span>RESULT PORTAL</span></div></div>
 </div>
 
 <script>
