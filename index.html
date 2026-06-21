@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Apple School — Biology Result Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-1:#0b1020;
+    --bg-2:#141b34;
+    --accent:#7c5cff;
+    --accent-2:#22d3ee;
+    --pass:#22c55e;
+    --fail:#f43f5e;
+    --absent:#f59e0b;
+    --card:#ffffff;
+    --ink:#111827;
+    --muted:#6b7280;
+    --line:#e9ebf2;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Inter', Arial, sans-serif;
+    background:
+      radial-gradient(900px 500px at 12% -10%, rgba(124,92,255,.35), transparent 60%),
+      radial-gradient(800px 500px at 110% 10%, rgba(34,211,238,.25), transparent 55%),
+      linear-gradient(160deg, var(--bg-1), var(--bg-2));
+    display:flex;
+    justify-content:center;
+    padding:48px 16px;
+    color:var(--ink);
+  }
+  .wrap{width:100%;max-width:640px;}
+  .brand{
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .brand .mark{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.14);
+    padding:6px 16px 6px 10px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .brand .mark .dot{
+    width:26px;height:26px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    flex-shrink:0;
+  }
+  .brand .mark span{
+    color:#cbd5ff;font-size:12.5px;font-weight:600;letter-spacing:.4px;
+  }
+  .brand h1{
+    font-family:'Sora',sans-serif;
+    font-weight:800;
+    font-size:30px;
+    margin:0 0 6px;
+    background:linear-gradient(90deg,#fff,#c9d3ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    letter-spacing:.2px;
+  }
+  .brand .sub1{color:#9aa3c7;font-size:13px;font-weight:500;margin:0 0 4px;}
+  .brand .sub2{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:17px;
+    color:#dfe3ff;
+    margin:2px 0;
+  }
+  .brand .sub3{color:#9aa3c7;font-size:13px;margin:2px 0 0;}
+  .testbar{
+    text-align:center;
+    color:#e7e9ff;
+    font-weight:600;
+    font-size:13px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+    margin:18px 0 0;
+  }
+  .testbar-wrap{text-align:center;}
+
+  .panel{
+    background:var(--card);
+    border-radius:22px;
+    margin-top:26px;
+    padding:26px;
+    box-shadow:0 30px 60px -20px rgba(10,14,40,.55);
+  }
+  .search-row{
+    display:flex;
+    gap:10px;
+  }
+  .search-row input{
+    flex:1;
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px;
+    font-size:15px;
+    outline:none;
+    font-family:'Inter',sans-serif;
+    transition:border-color .15s;
+  }
+  .search-row input:focus{border-color:var(--accent);}
+  .btn{
+    border:none;
+    border-radius:14px;
+    padding:0 18px;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    color:#fff;
+    font-family:'Inter',sans-serif;
+    transition:transform .1s, opacity .15s;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-search{background:linear-gradient(135deg,var(--accent),#5a3df0);}
+  .btn-search:hover{opacity:.92;}
+  .btn-print{background:#11182b;}
+  .btn-print:hover{opacity:.85;}
+
+  .result-area{margin-top:22px;}
+  .msg{
+    text-align:center;
+    color:var(--muted);
+    padding:34px 10px;
+    font-size:14.5px;
+  }
+
+  .student-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:6px 4px 18px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:18px;
+  }
+  .avatar{
+    width:52px;height:52px;border-radius:16px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:19px;
+    flex-shrink:0;
+  }
+  .student-head .name{font-family:'Sora',sans-serif;font-weight:700;font-size:17px;color:var(--ink);}
+  .student-head .meta{color:var(--muted);font-size:13px;margin-top:3px;}
+
+  .marks-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .mark-card{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:13px 14px;
+  }
+  .mark-card .lbl{font-size:11.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.3px;}
+  .mark-card .val{font-family:'Sora',sans-serif;font-weight:700;font-size:20px;margin-top:4px;color:var(--ink);}
+  .mark-card .val.absent{color:var(--absent);font-size:15px;}
+  .mark-card .max{font-size:11.5px;color:var(--muted);margin-top:2px;}
+
+  .summary{
+    display:flex;
+    gap:10px;
+  }
+  .summary .box{
+    flex:1;
+    border-radius:14px;
+    padding:14px 16px;
+    color:#fff;
+  }
+  .summary .box .lbl{font-size:11.5px;font-weight:600;opacity:.85;text-transform:uppercase;letter-spacing:.3px;}
+  .summary .box .val{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;margin-top:4px;}
+  .box.total{background:linear-gradient(135deg,#1f2540,#0b1020);}
+  .box.result.pass{background:linear-gradient(135deg,#16a34a,#15803d);}
+  .box.result.fail{background:linear-gradient(135deg,#e11d48,#9f1239);}
+  .box.result.pending{background:linear-gradient(135deg,#6b7280,#4b5563);}
+  .box.result.absent{background:linear-gradient(135deg,#f59e0b,#b45309);}
+
+  .support{
+    text-align:center;
+    color:#9aa3c7;
+    font-size:12.5px;
+    margin-top:26px;
+  }
+  .support a{color:#c9d3ff;text-decoration:none;font-weight:600;}
+
+  @media print{
+    body{background:#fff;padding:0;}
+    .brand .mark, .testbar-wrap, .search-row{display:none;}
+    .panel{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="mark"><span class="dot"></span><span>RESULT PORTAL</span></div>
+    <h1>The Apple School</h1>
+    <p class="sub1">in collaboration with</p>
+    <p class="sub2">Abhyaas IIT-JEE / NEET Foundation Academy</p>
+    <p class="sub3">Thattekere, Channapatna Town</p>
+    <div class="testbar-wrap"><span class="testbar">GRADE 10 · BIOLOGY WEEKLY TEST · 02-06-2026</span></div>
+  </div>
+
+  <div class="panel">
+    <div class="search-row">
+      <input id="searchBox" type="text" placeholder="Enter Roll No. / Password" autocomplete="off">
+      <button class="btn btn-search" onclick="doSearch()">Search</button>
+      <button class="btn btn-print" onclick="window.print()">Print</button>
+    </div>
+    <div class="result-area" id="result">
+      <p class="msg">Enter a Roll No. / Password and click Search to view the result.</p>
+    </div>
+  </div>
+
+  <p class="support">For support contact <a href="tel:9632318383">9632318383</a> · <a href="tel:9144844032">9144844032</a> · <a href="tel:8904329123">8904329123</a></p>
+</div>
+
+<script>
+/* ===================== STUDENT DATA =====================
+   Source: 2026_10th_BIO_02-06-2026.xlsx — Biology marks ONLY.
+   This page is independent of any other subject/test result page.
+   sbt = Biology Board Test (max 30)   sct = Biology Competitive Test (max 20)
+   "A" = Absent, "-" = not entered/conducted.
+*/
+const STUDENTS = [{"pwd":"AA2610D01","name":"AAYAAN TAQI","reg":"AA2610D01","cls":"10","sec":"DIAMOND","sbt":"16","sct":"15"},{"pwd":"AA2610D02","name":"AAZEEN AARA","reg":"AA2610D02","cls":"10","sec":"DIAMOND","sbt":"13","sct":"10"},{"pwd":"AA2610D03","name":"BHARATH SHETTY R S","reg":"AA2610D03","cls":"10","sec":"DIAMOND","sbt":"14","sct":"15"},{"pwd":"AA2610D04","name":"CHANDANA CS","reg":"AA2610D04","cls":"10","sec":"DIAMOND","sbt":"A","sct":"A"},{"pwd":"AA2610D05","name":"DEEKSHITH M","reg":"AA2610D05","cls":"10","sec":"DIAMOND","sbt":"6","sct":"8"},{"pwd":"AA2610D06","name":"DEEKSHITH R GOWDA","reg":"AA2610D06","cls":"10","sec":"DIAMOND","sbt":"9","sct":"14"},{"pwd":"AA2610D07","name":"HAMDAN SHARIFF","reg":"AA2610D07","cls":"10","sec":"DIAMOND","sbt":"A","sct":"A"},{"pwd":"AA2610D08","name":"HARINI N","reg":"AA2610D08","cls":"10","sec":"DIAMOND","sbt":"9","sct":"11"},{"pwd":"AA2610D09","name":"HEMANTH V R","reg":"AA2610D09","cls":"10","sec":"DIAMOND","sbt":"16","sct":"14"},{"pwd":"AA2610D10","name":"KEERTHANA","reg":"AA2610D10","cls":"10","sec":"DIAMOND","sbt":"29","sct":"16"},{"pwd":"AA2610D11","name":"LIKTH GOWDA S","reg":"AA2610D11","cls":"10","sec":"DIAMOND","sbt":"2","sct":"9"},{"pwd":"AA2610D12","name":"MOHAMMED ATA UR REHAMAN","reg":"AA2610D12","cls":"10","sec":"DIAMOND","sbt":"12","sct":"6"},{"pwd":"AA2610D13","name":"MOHAMMED MOPINUDDIN","reg":"AA2610D13","cls":"10","sec":"DIAMOND","sbt":"10","sct":"13"},{"pwd":"AA2610D14","name":"MOHITH B P","reg":"AA2610D14","cls":"10","sec":"DIAMOND","sbt":"20","sct":"8"},{"pwd":"AA2610D15","name":"MUSHA ALI","reg":"AA2610D15","cls":"10","sec":"DIAMOND","sbt":"13","sct":"10"},{"pwd":"AA2610D16","name":"POOJA S","reg":"AA2610D16","cls":"10","sec":"DIAMOND","sbt":"20","sct":"12"},{"pwd":"AA2610D17","name":"ROHAN S","reg":"AA2610D17","cls":"10","sec":"DIAMOND","sbt":"13","sct":"10"},{"pwd":"AA2610D18","name":"SHEZA FATHIMA","reg":"AA2610D18","cls":"10","sec":"DIAMOND","sbt":"25","sct":"14"},{"pwd":"AA2610D19","name":"SYED ALISHAN MADNI","reg":"AA2610D19","cls":"10","sec":"DIAMOND","sbt":"20","sct":"12"},{"pwd":"AA2610D20","name":"SYED MUFASSIR","reg":"AA2610D20","cls":"10","sec":"DIAMOND","sbt":"19","sct":"13"},{"pwd":"AA2610D21","name":"SYED SADAKATH MEHDI BUKHARI","reg":"AA2610D21","cls":"10","sec":"DIAMOND","sbt":"17","sct":"15"},{"pwd":"AA2610D22","name":"SYEDA YUSRE TEHREEM","reg":"AA2610D22","cls":"10","sec":"DIAMOND","sbt":"22","sct":"15"},{"pwd":"AA2610D23","name":"TEJAS M","reg":"AA2610D23","cls":"10","sec":"DIAMOND","sbt":"6","sct":"8"},{"pwd":"AA2610D24","name":"VIJAY KUMAR","reg":"AA2610D24","cls":"10","sec":"DIAMOND","sbt":"5","sct":"15"},{"pwd":"AA2610D25","name":"YUKTHI PRIYA V S","reg":"AA2610D25","cls":"10","sec":"DIAMOND","sbt":"22","sct":"18"},{"pwd":"AA2610D26","name":"ZAIFI AINAN","reg":"AA2610D26","cls":"10","sec":"DIAMOND","sbt":"25","sct":"14"},{"pwd":"AA2610C01","name":"ABISHEK GOWDA S","reg":"AA2610C01","cls":"10","sec":"CORAL","sbt":"14","sct":"8"},{"pwd":"AA2610C02","name":"ADITHYA B","reg":"AA2610C02","cls":"10","sec":"CORAL","sbt":"5","sct":"8"},{"pwd":"AA2610C03","name":"AMRUTHA KRUPA S","reg":"AA2610C03","cls":"10","sec":"CORAL","sbt":"13","sct":"8"},{"pwd":"AA2610C04","name":"AYUSHI SANTOSH JADHAV","reg":"AA2610C04","cls":"10","sec":"CORAL","sbt":"12","sct":"15"},{"pwd":"AA2610C05","name":"DAKSHAYA A C","reg":"AA2610C05","cls":"10","sec":"CORAL","sbt":"15","sct":"17"},{"pwd":"AA2610C06","name":"DHANUSHREE B G","reg":"AA2610C06","cls":"10","sec":"CORAL","sbt":"9","sct":"12"},{"pwd":"AA2610C07","name":"DHAVAN N","reg":"AA2610C07","cls":"10","sec":"CORAL","sbt":"18","sct":"13"},{"pwd":"AA2610C08","name":"GAUSIYA KHANUM","reg":"AA2610C08","cls":"10","sec":"CORAL","sbt":"3","sct":"9"},{"pwd":"AA2610C09","name":"HAMSA K U","reg":"AA2610C09","cls":"10","sec":"CORAL","sbt":"20","sct":"11"},{"pwd":"AA2610C10","name":"HEMANTH GURUVAPPA L","reg":"AA2610C10","cls":"10","sec":"CORAL","sbt":"2","sct":"9"},{"pwd":"AA2610C11","name":"MOHAMMED AMEEN AHMED","reg":"AA2610C11","cls":"10","sec":"CORAL","sbt":"20","sct":"12"},{"pwd":"AA2610C12","name":"MOHAMMED HADI KHAN","reg":"AA2610C12","cls":"10","sec":"CORAL","sbt":"14","sct":"15"},{"pwd":"AA2610C13","name":"MOHITHA B S","reg":"AA2610C13","cls":"10","sec":"CORAL","sbt":"A","sct":"A"},{"pwd":"AA2610C14","name":"NIHA SULTHANA","reg":"AA2610C14","cls":"10","sec":"CORAL","sbt":"6","sct":"4"},{"pwd":"AA2610C15","name":"NIKHIL C B","reg":"AA2610C15","cls":"10","sec":"CORAL","sbt":"9","sct":"7"},{"pwd":"AA2610C16","name":"RAKSHA","reg":"AA2610C16","cls":"10","sec":"CORAL","sbt":"9","sct":"5"},{"pwd":"AA2610C17","name":"SAIFA ASIYA","reg":"AA2610C17","cls":"10","sec":"CORAL","sbt":"A","sct":"A"},{"pwd":"AA2610C18","name":"SIRI .S","reg":"AA2610C18","cls":"10","sec":"CORAL","sbt":"3","sct":"11"},{"pwd":"AA2610C19","name":"SYED AIMAN","reg":"AA2610C19","cls":"10","sec":"CORAL","sbt":"A","sct":"A"},{"pwd":"AA2610C20","name":"SYED ATHIF AHMED","reg":"AA2610C20","cls":"10","sec":"CORAL","sbt":"7","sct":"9"},{"pwd":"AA2610C21","name":"SYED KHUDA BAKSH KHURRAM","reg":"AA2610C21","cls":"10","sec":"CORAL","sbt":"21","sct":"14"},{"pwd":"AA2610C22","name":"SYED NUMAN","reg":"AA2610C22","cls":"10","sec":"CORAL","sbt":"16","sct":"4"},{"pwd":"AA2610C23","name":"SYED RASOOL TAHA","reg":"AA2610C23","cls":"10","sec":"CORAL","sbt":"24","sct":"18"},{"pwd":"AA2610C24","name":"SYEDA KHATEEN","reg":"AA2610C24","cls":"10","sec":"CORAL","sbt":"10","sct":"7"},{"pwd":"AA2610C25","name":"SYEDA SAMIYA","reg":"AA2610C25","cls":"10","sec":"CORAL","sbt":"16","sct":"13"},{"pwd":"AA2610C26","name":"TEJAS BHALLE M P","reg":"AA2610C26","cls":"10","sec":"CORAL","sbt":"11","sct":"13"},{"pwd":"AA2610C27","name":"YOGARAJA M","reg":"AA2610C27","cls":"10","sec":"CORAL","sbt":"A","sct":"A"}];
+
+/* Pass mark: 35% of total max marks of subjects entered. Change this to match school rule. */
+const PASS_PERCENT = 35;
+
+const SUBJECTS = [
+  {key:'sbt', label:'Biology Board Test', max:30},
+  {key:'sct', label:'Biology Competitive', max:20}
+];
+
+function isNumeric(v){ return v !== '-' && v !== 'A' && v !== '' && v !== undefined && !isNaN(Number(v)); }
+
+function initials(name){
+  const parts = name.trim().split(/\s+/);
+  return ((parts[0]?.[0]||'') + (parts[1]?.[0]||'')).toUpperCase();
+}
+
+function render(student){
+  const cards = SUBJECTS.map(s=>{
+    const v = student[s.key];
+    const isAbsent = v === 'A';
+    const isPending = v === '-';
+    const display = isAbsent ? 'Absent' : isPending ? '—' : v;
+    const cls = isAbsent ? 'val absent' : 'val';
+    return `<div class="mark-card">
+      <div class="lbl">${s.label}</div>
+      <div class="${cls}">${display}</div>
+      <div class="max">Max marks: ${s.max}</div>
+    </div>`;
+  }).join('');
+
+  const allAbsent = SUBJECTS.every(s=>student[s.key] === 'A');
+  const allEntered = SUBJECTS.every(s=>isNumeric(student[s.key]));
+  let total = '—', resultLabel = 'Pending', resultClass = 'pending';
+  if(allAbsent){
+    total = 'Absent';
+    resultLabel = 'ABSENT';
+    resultClass = 'absent';
+  } else if(allEntered){
+    const sum = SUBJECTS.reduce((acc,s)=>acc+Number(student[s.key]),0);
+    const maxSum = SUBJECTS.reduce((acc,s)=>acc+s.max,0);
+    total = sum + ' / ' + maxSum;
+    const pass = sum >= (PASS_PERCENT/100)*maxSum;
+    resultLabel = pass ? 'PASS' : 'NC';
+    resultClass = pass ? 'pass' : 'fail';
+  }
+
+  document.getElementById('result').innerHTML = `
+    <div class="student-head">
+      <div class="avatar">${initials(student.name)}</div>
+      <div>
+        <div class="name">${student.name}</div>
+        <div class="meta">Roll No. ${student.reg} · Class ${student.cls} · ${student.sec}</div>
+      </div>
+    </div>
+    <div class="marks-grid">${cards}</div>
+    <div class="summary">
+      <div class="box total"><div class="lbl">Total</div><div class="val">${total}</div></div>
+      <div class="box result ${resultClass}"><div class="lbl">Result</div><div class="val">${resultLabel}</div>${resultLabel==='NC' ? '<div style="font-size:11px;font-weight:600;opacity:.85;margin-top:2px;">Not Completed</div>' : ''}</div>
+    </div>
+  `;
+}
+
+function doSearch(){
+  const q = document.getElementById('searchBox').value.trim().toUpperCase();
+  if(!q){
+    document.getElementById('result').innerHTML = '<p class="msg">Enter a Roll No. / Password to view the result.</p>';
+    return;
+  }
+  const student = STUDENTS.find(s => s.reg.toUpperCase() === q || s.pwd.toUpperCase() === q);
+  if(!student){
+    document.getElementById('result').innerHTML = '<p class="msg">No record found for "'+q+'". Please check and try again.</p>';
+    return;
+  }
+  render(student);
+}
+
+document.getElementById('searchBox').addEventListener('keyup', function(e){
+  if(e.key === 'Enter') doSearch();
+});
+</script>
+
+</body>
+</html>
