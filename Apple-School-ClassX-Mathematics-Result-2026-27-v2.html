@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Apple School — Class 10 Mathematics Test Result 2026-27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0f1e;
+    --bg2:#131a30;
+    --card:#ffffff;
+    --ink:#12142b;
+    --muted:#6b7280;
+    --border:#e6e8ee;
+    --accent:#6c5ce7;
+    --accent2:#4a90e2;
+    --pass:#1fa971;
+    --nc:#e0454f;
+    --absent:#e08e1a;
+    --pending:#8a8a9a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    background:radial-gradient(ellipse at top, var(--bg2), var(--bg) 70%);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:48px 20px;
+  }
+  .wrap{width:100%;max-width:620px;}
+  .brand{text-align:center;margin-bottom:26px;}
+  .brand h1{
+    font-family:'Sora',sans-serif;
+    font-weight:800;
+    font-size:2.6rem;
+    letter-spacing:-0.5px;
+    color:#ffffff;
+    line-height:1.1;
+  }
+  .brand .collab{color:#93a0b8;font-size:0.85rem;margin-top:14px;letter-spacing:0.3px;}
+  .brand h2{
+    font-family:'Sora',sans-serif;
+    font-weight:800;
+    font-size:1.4rem;
+    margin-top:4px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .brand .location{color:var(--accent2);font-size:0.82rem;margin-top:4px;font-weight:500;}
+  .badge-pill{
+    display:inline-block;
+    margin-top:18px;
+    padding:8px 20px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.05);
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:0.78rem;
+    letter-spacing:0.6px;
+    color:#dfe3ee;
+  }
+  .card{
+    background:var(--card);
+    border-radius:22px;
+    padding:26px;
+    margin-top:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  }
+  .search-row{display:flex;gap:10px;}
+  .search-row input{
+    flex:1;
+    padding:13px 16px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    font-size:0.95rem;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    outline:none;
+    text-transform:uppercase;
+  }
+  .search-row input::placeholder{color:#a3a8b8;text-transform:none;}
+  .search-row input:focus{border-color:var(--accent);}
+  .btn{
+    padding:13px 22px;
+    border-radius:12px;
+    border:none;
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:0.9rem;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn-search{background:var(--accent);color:#fff;}
+  .btn-search:hover{background:#5b4bd6;}
+  .btn-print{background:var(--ink);color:#fff;}
+  .btn-print:hover{background:#000;}
+  .error{
+    display:none;
+    margin-top:14px;
+    padding:10px 12px;
+    border-radius:10px;
+    background:rgba(224,69,79,0.08);
+    border:1px solid rgba(224,69,79,0.35);
+    color:#b3323c;
+    font-size:0.82rem;
+  }
+  .result{display:none;margin-top:22px;}
+  .result-header{display:flex;align-items:center;gap:14px;padding-bottom:18px;border-bottom:1px solid var(--border);}
+  .avatar{
+    width:52px;height:52px;border-radius:14px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .result-header .rname{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;color:var(--ink);}
+  .result-header .rmeta{color:var(--muted);font-size:0.85rem;margin-top:2px;}
+  .subject-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-top:20px;
+  }
+  .subject-box{
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .subject-box .label{color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
+  .subject-box .value{font-family:'Sora',sans-serif;font-weight:800;font-size:1.6rem;color:var(--ink);margin-top:4px;}
+  .subject-box .maxline{color:var(--muted);font-size:0.78rem;margin-top:2px;}
+  .result-strip{
+    margin-top:14px;
+    border-radius:14px;
+    padding:16px 18px;
+    color:#fff;
+  }
+  .result-strip.PASS{background:var(--pass);}
+  .result-strip.NC{background:var(--nc);}
+  .result-strip.ABSENT{background:var(--absent);}
+  .result-strip.PENDING{background:var(--pending);}
+  .result-strip .label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:700;opacity:0.9;}
+  .result-strip .value{font-family:'Sora',sans-serif;font-weight:800;font-size:1.4rem;margin-top:2px;}
+  .back-link{
+    display:block;text-align:center;margin-top:18px;color:var(--muted);
+    font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:underline;
+  }
+  .footer{text-align:center;margin-top:28px;color:#8892a8;font-size:0.8rem;}
+  .footer b{color:#c3cadd;}
+  @media print{
+    body{background:#fff;color:#000;padding:0;}
+    .brand, .footer{color:#000;}
+    .brand h1{color:#000;}
+    .badge-pill{border-color:#000;color:#000;background:none;}
+    .search-row, .back-link{display:none !important;}
+    .card{box-shadow:none;border:1px solid #ccc;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <h1>The Apple School</h1>
+    <div class="collab">in collaboration with</div>
+    <h2>Abhyaas IIT-JEE &amp; NEET Academy</h2>
+    <div class="location">Thattekere, Channapatna Town</div>
+    <div class="badge-pill">CLASS 10 &middot; MATHEMATICS TEST &middot; 2026-27</div>
+  </div>
+
+  <div class="card">
+    <div class="search-row" id="searchRow">
+      <input type="text" id="rollInput" placeholder="e.g. AA2610D01" autocomplete="off">
+      <button class="btn btn-search" onclick="lookupResult()">Search</button>
+      <button class="btn btn-print" id="printBtn" onclick="window.print()" style="display:none;">Print</button>
+    </div>
+    <div class="error" id="errorMsg">No record found for this Register Number. Please check and try again.</div>
+
+    <div class="result" id="resultPanel">
+      <div class="result-header">
+        <div class="avatar" id="rAvatar"></div>
+        <div>
+          <div class="rname" id="rName"></div>
+          <div class="rmeta" id="rMeta"></div>
+        </div>
+      </div>
+      <div class="subject-grid" id="subjectGrid"></div>
+      <div class="result-strip" id="resultStrip">
+        <div class="label">Result</div>
+        <div class="value" id="resultValue"></div>
+      </div>
+      <span class="back-link" onclick="resetForm()">Check another result</span>
+    </div>
+  </div>
+
+  <div class="footer">Vidhyaa Cyber &middot; <b>myresultsin</b></div>
+</div>
+
+<script>
+const PASS_PERCENT = 35;
+
+const students = [{"roll": "AA2610D01", "name": "AAYAAN TAQI", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 11, "max": 40}]}, {"roll": "AA2610D02", "name": "AAZEEN AARA", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 7, "max": 40}]}, {"roll": "AA2610D03", "name": "BHARATH SHETTY R.S", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 16, "max": 40}]}, {"roll": "AA2610D04", "name": "CHANDANA C S", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 3, "max": 40}]}, {"roll": "AA2610D05", "name": "DEEKSHITH M", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 3, "max": 40}]}, {"roll": "AA2610D06", "name": "DEEKSITH R GOWDA", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610D07", "name": "HAMDAN SHARIFF", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 10, "max": 40}]}, {"roll": "AA2610D08", "name": "HARINI N", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610D09", "name": "HEMANTH V R", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 12, "max": 40}]}, {"roll": "AA2610D10", "name": "KEERTHANA", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610D11", "name": "LIKITH GOWDA S", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 3, "max": 40}]}, {"roll": "AA2610D12", "name": "MOHAMMED ATA UR REHMAN", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 16, "max": 40}]}, {"roll": "AA2610D13", "name": "MOHAMMED MOINUDDIN", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 8, "max": 40}]}, {"roll": "AA2610D14", "name": "MOHITH B P", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 7, "max": 40}]}, {"roll": "AA2610D15", "name": "MYSHA ALI", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 7, "max": 40}]}, {"roll": "AA2610D16", "name": "POOJA S", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 9, "max": 40}]}, {"roll": "AA2610D17", "name": "ROHAN S", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 13, "max": 40}]}, {"roll": "AA2610D18", "name": "SHEZA FATHIMA", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 26.5, "max": 40}]}, {"roll": "AA2610D19", "name": "SYED ALISHAN MADNI", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 15, "max": 40}]}, {"roll": "AA2610D20", "name": "SYED MUFASSIR", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 14, "max": 40}]}, {"roll": "AA2610D21", "name": "SYED SADAKATH MEHDI BUKHARI", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 21, "max": 40}]}, {"roll": "AA2610D22", "name": "SYEDA YUSRA TEHREEM", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610D23", "name": "TEJAS M", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 3, "max": 40}]}, {"roll": "AA2610D24", "name": "VIJAY KUMAR", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 19, "max": 40}]}, {"roll": "AA2610D25", "name": "YUKTHI PRIYA V S", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 30, "max": 40}]}, {"roll": "AA2610D26", "name": "ZAIFI AFNAN", "section": "DIAMOND", "subjects": [{"name": "Mathematics", "marks": 15, "max": 40}]}, {"roll": "AA2610C01", "name": "ABISHEK GOWDA S", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 11, "max": 40}]}, {"roll": "AA2610C02", "name": "ADITHYA B", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610C03", "name": "AMRUTHA KRUPA S", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 14, "max": 40}]}, {"roll": "AA2610C04", "name": "AYUSHI SANTOSH JADHAV", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 10, "max": 40}]}, {"roll": "AA2610C05", "name": "DAKSHAYA A C", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 18, "max": 40}]}, {"roll": "AA2610C06", "name": "DHANUSHREE B G", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 7, "max": 40}]}, {"roll": "AA2610C07", "name": "DHAVAN N", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 14, "max": 40}]}, {"roll": "AA2610C08", "name": "GAUSIYA KHANUM", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610C09", "name": "HAMSA K U", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 8, "max": 40}]}, {"roll": "AA2610C10", "name": "HEMANTH GURUVAPPA L", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610C11", "name": "MOHAMMED AMEEN AHMED", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 25.5, "max": 40}]}, {"roll": "AA2610C12", "name": "MOHAMMED HADI KHAN", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 15, "max": 40}]}, {"roll": "AA2610C13", "name": "MOHITHA B S", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 9, "max": 40}]}, {"roll": "AA2610C14", "name": "NIHA SULTHANA", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 3, "max": 40}]}, {"roll": "AA2610C15", "name": "NIKHIL C B", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610C16", "name": "RAKSHA", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 10, "max": 40}]}, {"roll": "AA2610C17", "name": "SAIFA ASIYA", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 16, "max": 40}]}, {"roll": "AA2610C18", "name": "SIRI .S", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 3, "max": 40}]}, {"roll": "AA2610C19", "name": "SYED AIMAN", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 7, "max": 40}]}, {"roll": "AA2610C20", "name": "SYED ATHIF AHMED", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 10, "max": 40}]}, {"roll": "AA2610C21", "name": "SYED KHUDA BAKSH KHURRAM", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 10, "max": 40}]}, {"roll": "AA2610C22", "name": "SYED NUMAN", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 18, "max": 40}]}, {"roll": "AA2610C23", "name": "SYED RASOOL TAHA", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610C24", "name": "SYEDA KHATEEN", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610C25", "name": "SYEDA SAMIYA", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610C26", "name": "TEJAS BHALLE M P", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": "AB", "max": 40}]}, {"roll": "AA2610C27", "name": "YOGARAJA M", "section": "CORAL", "subjects": [{"name": "Mathematics", "marks": 21, "max": 40}]}];
+
+function initials(name){
+  const parts = name.trim().split(/\s+/);
+  let out = parts[0][0];
+  if(parts.length > 1) out += parts[1][0];
+  return out.toUpperCase();
+}
+
+function lookupResult(){
+  const val = document.getElementById('rollInput').value.trim().toUpperCase();
+  const errBox = document.getElementById('errorMsg');
+  errBox.style.display = 'none';
+  if(!val){
+    errBox.textContent = 'Please enter your Register Number.';
+    errBox.style.display = 'block';
+    return;
+  }
+  const student = students.find(s => s.roll.toUpperCase() === val);
+  if(!student){
+    document.getElementById('resultPanel').style.display = 'none';
+    document.getElementById('printBtn').style.display = 'none';
+    errBox.textContent = 'No record found for this Register Number. Please check and try again.';
+    errBox.style.display = 'block';
+    return;
+  }
+  showResult(student);
+}
+
+function showResult(student){
+  document.getElementById('rAvatar').textContent = initials(student.name);
+  document.getElementById('rName').textContent = student.name;
+  document.getElementById('rMeta').textContent = 'Roll No. ' + student.roll + ' \u00b7 Class 10 \u00b7 ' + student.section;
+
+  const grid = document.getElementById('subjectGrid');
+  grid.innerHTML = '';
+
+  let allAbsent = true;
+  let allComplete = true;
+  let anyFail = false;
+
+  student.subjects.forEach(sub => {
+    const isAbsent = (typeof sub.marks === 'string' && sub.marks.toUpperCase() === 'AB');
+    if(!isAbsent) allAbsent = false;
+    if(isAbsent || sub.marks === null || sub.marks === undefined || sub.marks === '') allComplete = false;
+
+    const box = document.createElement('div');
+    box.className = 'subject-box';
+    const valueText = isAbsent ? 'AB' : sub.marks;
+    box.innerHTML = '<div class="label">' + sub.name + '</div>' +
+                     '<div class="value">' + valueText + (isAbsent ? '' : ' / ' + sub.max) + '</div>' +
+                     '<div class="maxline">Max marks: ' + sub.max + '</div>';
+    grid.appendChild(box);
+
+    if(!isAbsent && typeof sub.marks === 'number'){
+      const pct = (sub.marks / sub.max) * 100;
+      if(pct < PASS_PERCENT) anyFail = true;
+    }
+  });
+
+  let status;
+  if(allAbsent){
+    status = 'ABSENT';
+  } else if(!allComplete){
+    status = 'PENDING';
+  } else if(anyFail){
+    status = 'NC';
+  } else {
+    status = 'PASS';
+  }
+
+  const labels = {PASS:'PASS', NC:'NOT COMPLETED', ABSENT:'ABSENT', PENDING:'PENDING'};
+  const strip = document.getElementById('resultStrip');
+  strip.className = 'result-strip ' + status;
+  document.getElementById('resultValue').textContent = labels[status];
+
+  document.getElementById('resultPanel').style.display = 'block';
+  document.getElementById('printBtn').style.display = 'inline-block';
+}
+
+function resetForm(){
+  document.getElementById('resultPanel').style.display = 'none';
+  document.getElementById('printBtn').style.display = 'none';
+  document.getElementById('rollInput').value = '';
+  document.getElementById('errorMsg').style.display = 'none';
+}
+
+document.getElementById('rollInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') lookupResult();
+});
+</script>
+</body>
+</html>
